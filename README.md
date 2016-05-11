@@ -45,7 +45,7 @@ Usage: tinc-mgr <options>
 OPTIONS
  add                 Adds a new client
  delete              Deletes a client
- set_connectto_node  Promotes a client to a 'ConnectTo' host [Example: tinc-mgr connectto_node <existing shortname>]
+ set_connectto_node  Promotes a client to a 'ConnectTo' node
  set_std_client      Demotes a client back to a standard, non-ConnectTo client
  sync                Syncs Tinc config to clients
  list                Lists VPN client shortname, IP address and Tinc address
@@ -81,6 +81,7 @@ Note: only one option must be used at a time.
 
 ## TODO
 
+ * Post-sync action: run X after a sync operation (ie: `/etc/init.d/tinc restart`)
  * Manage multiple VPN networks
  * Better SSH options, ie. SSH user, port and/or sudo user for synching configs.
  * Re-key feature
