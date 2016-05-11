@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+#
+# tinc-mgr 0.1
+
+# BASH MODES
+set -u
+set -o pipefail
+
+# CONSTANTS
+readonly home_dir="$( cd "$( dirname $0 )" ; pwd )"
+readonly includes_dir="${home_dir}/includes"
+
+# INCLUDES
+source "${includes_dir}/bash-project.sh"
+source "${includes_dir}/tinc-mgr-vars.sh"
+source "${includes_dir}/tinc-mgr-functions.sh"
+source "${home_dir}/tinc-mgr.conf"
+
+# MAIN
+main() {
+
+  # Arg check
+  [ $# -le 0 ] && usage && exit 1
+
+  # we only take one option at a time
+  OPTION="$1" ; shift
+  PARMS=$@
+
+  # Various startup check
+  check_dependencies
+  verify_config
+  new_setup
+  
+  # Parse option
+  case $OPTION in 
+    "add") add_client $PARMS ;;
+    "delete") delete_client $PARMS ;;
+    "set_connectto_node") set_ct_node $PARMS ;;
+    "set_std_client") unset_ct_node $PARMS ;;
+    "delete") shift ; delete_client "$@" ;;
+    "list") list_clients ;;
+    "sync") sync_clients ;;
+    "help") usage && exit 0 ;;
+    *) usage && exit 1  ;;
+  esac
+
+  msg 
+}
+
+main $@
