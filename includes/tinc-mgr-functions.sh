@@ -267,7 +267,7 @@ sync_clients(){
        continue
     fi
     
-    if ! ssh root@${this_client_ip} "[ ! -w "${tinc_config_dir}" ]" >/dev/null 2>&1 ; then
+    if ! ssh root@${this_client_ip} "[ -w "${tinc_config_dir}" ]" >/dev/null 2>&1 ; then
        msg "${t_red}ERROR: ${t_normal}Tinc config dir ${tinc_config_dir} is not writeable on client ${client}. Skipping."
        ((sync_errors++))
        continue
