@@ -153,6 +153,7 @@ add_client() {
     touch "${this_client_remote_config_dir}/rsa_key.priv"
     
     chmod +x "${this_client_remote_config_dir}/tinc-up" "${this_client_remote_config_dir}/tinc-down"
+    chmod 0600 "${this_client_remote_config_dir}/rsa_key.priv"
     
     echo "Name = ${shortname}
 AddressFamily = ${tinc_protocol}
