@@ -30,9 +30,9 @@ Tested on CentOS 6.7 and OS X. Should work on any system with BASH 4 or later.
 
 ### Installation
 
-1. Clone this repo to your preferred directory (eg: /opt/tinc-mgr)
+1. Clone this repo to your preferred directory (eg: `/opt/tinc-mgr`)
 
-  `git clone https://github.com/curtis86/tinc-mgr`
+  `cd /opt && git clone https://github.com/curtis86/tinc-mgr`
 
 
 ### Usage
