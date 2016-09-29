@@ -256,7 +256,7 @@ sync_clients(){
         
     msg "Syncing config to client ${client}..."
     
-    if ! nc -w "${sync_timeout}" -z "${this_client_ip}" 22 >/dev/null 2>&1 ; then
+    if ! ncat -w "${sync_timeout}" "${this_client_ip}" 22 </dev/null >/dev/null 2>&1 ; then
       msg "${t_red}ERROR: ${t_normal}Unable to connect to ${client} on address ${this_client_ip}. Skipping."
       ((sync_errors++))
       continue

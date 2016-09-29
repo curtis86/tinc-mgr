@@ -13,4 +13,4 @@ readonly address_table="${config_dir}/address-table.txt"
 
 readonly sync_timeout=5
 
-readonly dependencies=( "nc" "rsync" "tincd" )
+readonly dependencies=( "ncat" "rsync" "tincd" )
